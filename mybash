@@ -1,0 +1,107 @@
+#!/bin/bash 
+echo Hello World!
+echo 'New line'; echo "second line"
+
+Variable1="Testing Variable"
+Variable2="Testing two string"
+
+echo "$Variable1"
+echo "$Variable2"
+
+echo ${Variable1/Test/hello}
+
+echo {1..10}
+echo {a..z}
+./test
+
+echo "last retured value $?"
+echo "Script PID $$"
+echo "Number of arg passed to script: $#"
+echo "First arg to script $1 $2"
+echo "User name: $USER"
+#read Name
+#echo Hello, $Name!
+
+pwd
+MYDIR=$?
+
+echo "$MYDIR"
+
+Name="jing"
+if [ $Name != "jing" ]
+then 
+	echo "You are not the username"
+else
+	echo "Yes, you are the user"
+fi
+
+ls -al | grep "\.c"
+
+echo "input?"
+
+#read Variable
+
+case "$Variable" in
+	0) echo "zero" ;;
+	1) echo "one"  ;;
+	*) echo "not null" ;;
+esac
+
+for ((a=1; a<=3; a++))
+do
+	echo $a
+done
+
+echo $PATH
+echo $HOSTNAME
+
+function myinfo
+{
+	echo "ted is testing"
+}
+
+myinfo
+
+if [ -f test.c ]
+then echo "it is a file"
+else
+     echo "it is not a file"
+fi
+
+
+MYDIR=$(pwd)
+
+echo $MYDIR
+
+echo "testing of errors" >&2
+
+echo $(( 2 + 3))
+
+num=0
+while [ $num -lt 10 ]; 
+do
+	echo "num = $num"
+	num=$((num+1))
+done
+
+selection=
+until [ "$selection" = "0" ]; do
+	echo ""
+	echo "MENU"
+	echo "1 Display free disk space"
+	echo "2 Display free memory"
+	echo "0 exit"
+	echo ""
+	echo -n "Enter Selection: "
+	read selection
+	echo ""
+	case $selection in
+		1) df;;
+		2) free;;
+		0) exit;;
+		*) echo "Enter 0, 1, 2?"
+	esac
+done
+
+exit 0
+
